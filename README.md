@@ -4,10 +4,10 @@
 `git clone https://github.com/itonyluke/show_me_the_notes.git show_me_the_notes`
 
 #### build:
-`clang++ show_me_the_notes.cpp`
+`make`
 
 #### run:
-`./a.out`
+`./show`
 
 `use up and down arrows to switch between the notes`
 
