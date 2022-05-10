@@ -63,8 +63,8 @@ int	opendir_and_save_filenames_in_vector(DIR *dir, std::vector<std::string> &fil
 	{
 		while ((diread = readdir(dir)) != nullptr)
 		{
-			if (std::strcmp(diread->d_name, ".") == 0 || std::strcmp
-																 (diread->d_name, "..") == 0)
+			if (std::strncmp(diread->d_name, ".", 1) == 0 || std::strncmp
+																 (diread->d_name, ".. ", 2) == 0)
 				continue;
 			files.push_back(diread->d_name);
 		}

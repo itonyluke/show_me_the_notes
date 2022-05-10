@@ -37,6 +37,7 @@
 # include "../include_files/term_cap.hpp"
 
 # define THE_PATH "./notes/"
+/* # define THE_PATH "/Users/wanisha/21schoolmain/personal/txt/notes/" */
 
 void	init_term(t_s &s);
 void	error_exit(t_s &s, int err_code);
