@@ -36,6 +36,7 @@ typedef struct	s_s
 	std::vector<std::string>					files;
 	std::vector<std::string>::iterator			it;
 	DIR											*dir;
+	unsigned int 								note_number;
 }				t_s;
 
 #endif //STRUCTURES_HPP

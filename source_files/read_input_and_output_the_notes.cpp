@@ -35,7 +35,42 @@ void	output_file_names_from_vector(std::vector<std::string>& files)
 	}
 }
 
-int output_file(t_s &s)
+int	update_the_list_of_the_files(t_s &s)
+{
+	s.files.clear();
+	struct dirent *diread = nullptr;
+	s.dir = opendir(THE_PATH);
+	if (s.dir != nullptr)
+	{
+		while ((diread = readdir(s.dir)) != nullptr)
+		{
+			if (std::strncmp(diread->d_name, ".", 1) == 0 || std::strncmp
+																	 (diread->d_name, ".. ", 2) == 0)
+				continue;
+			s.files.push_back(diread->d_name);
+		}
+		closedir(s.dir);
+	}
+	else
+	{
+		output_error_prompt();
+		return (1);
+	}
+	return (0);
+
+}
+
+void	output_note_number_and_title_in_color(t_s &s)
+{
+	std::cout << colors::faint << "[" << colors::reset;
+	std::cout << "#" << s.note_number << colors::faint;
+	std::cout << "/" << s.files.size() - 1 << " | ";
+	std::cout << colors::reset << *s.it	<< colors::faint;
+	std::cout << "]" << colors::reset << std::endl;
+	std::cout << colors::faint << "." << colors::reset << std::endl;
+}
+
+int		output_file(t_s &s)
 {
 	char			buffer[PATH_MAX];
 	std::string		str = THE_PATH + *s.it;
@@ -52,7 +87,7 @@ int output_file(t_s &s)
 	FILE *file = std::fopen(buffer, "r");
 	if (file)
 	{
-		std::cout << *s.it << std::endl;
+		output_note_number_and_title_in_color(s);
 		int c = 0;
 		while ((c = std::fgetc(file)) != EOF)
 			std::putchar(c);
@@ -62,8 +97,9 @@ int output_file(t_s &s)
 	{
 		output_error_prompt();
 		std::cerr << "file.open(" << *s.it << ") failed" << std::endl;
-		error_exit(s, -7);
+		update_the_list_of_the_files(s);
 	}
+
 	return (0);
 }
 

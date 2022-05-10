@@ -26,10 +26,23 @@
 
 bool no_signal_received = true;
 
+void decrement_the_variables(t_s &s)
+{
+	--s.it;
+	--s.note_number;
+}
+
+void increment_the_variables(t_s &s)
+{
+	++s.it;
+	++s.note_number;
+}
+
 void get_input_and_output_the_notes(t_s &s)
 {
 	std::memset(s.str, '\0', 1000);
 	s.it = s.files.begin();
+	s.note_number = 0;
 	system("clear");
 	if (output_file(s) == 1)
 		error_exit(s,-7);
@@ -39,7 +52,7 @@ void get_input_and_output_the_notes(t_s &s)
 		if (std::strcmp(s.str, UP_ARROW) == 0)
 		{
 			if (s.it != s.files.begin())
-				--s.it;
+				decrement_the_variables(s);
 			system("clear");
 			if (output_file(s))
 				continue;
@@ -47,7 +60,7 @@ void get_input_and_output_the_notes(t_s &s)
 		else if (std::strcmp(s.str, DOWN_ARROW) == 0)
 		{
 			if (s.it != s.files.end())
-				++s.it;
+				increment_the_variables(s);
 			system("clear");
 			if (output_file(s))
 				continue;

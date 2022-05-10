@@ -47,5 +47,8 @@ void	reset_initial_terminal_attributes(t_s &s);
 void	init_failed(t_s &s, int err_code);
 int		output_file(t_s &s);
 void	read_input(t_s &s);
+int		opendir_and_save_filenames_in_vector(DIR *dir,
+												std::vector<std::string> &files);
+void	check_opendir_return_value(unsigned int check);
 
 #endif //SHOW_ME_THE_NOTES_HPP
