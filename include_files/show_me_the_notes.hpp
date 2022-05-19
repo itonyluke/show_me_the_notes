@@ -37,7 +37,11 @@
 # include "../include_files/term_cap.hpp"
 
 /* # define THE_PATH "./notes/" */
+<<<<<<< HEAD
 # define THE_PATH "/Users/antonpavlyukevich/home_push/21schoolmain/personal/txt/notes/"
+=======
+# define THE_PATH "/Users/wanisha/21schoolmain/personal/txt/notes/"
+>>>>>>> 58991bdb91d24716bc2d05738a72fb755bb4e3f7
 
 void	init_term(t_s &s);
 void	error_exit(t_s &s, int err_code);
