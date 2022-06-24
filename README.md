@@ -1,4 +1,4 @@
-### command-line notes viewer
+### this program helps you to view the notes saved as *.txt files
 #### install:
 
 `git clone https://github.com/itonyluke/show_me_the_notes.git show_me_the_notes`
